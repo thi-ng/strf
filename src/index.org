@@ -67,7 +67,7 @@ target/strf-<<version>>.js
 #+END_SRC
 **** [[https://github.com/clojure/clojurescript][ClojureScript]]
 #+BEGIN_SRC clojure :noweb-ref dep-cljs
-[org.clojure/clojurescript "0.0-3269"]
+[org.clojure/clojurescript "0.0-3291"]
 #+END_SRC
 *** Development
 **** [[https://github.com/hugoduncan/criterium][Criterium]]
@@ -80,7 +80,7 @@ target/strf-<<version>>.js
 #+END_SRC
 **** [[https://github.com/emezeske/lein-cljsbuild][Cljsbuild]]
 #+BEGIN_SRC clojure :noweb-ref dep-cljsbuild
-[lein-cljsbuild "1.0.5"]
+[lein-cljsbuild "1.0.6"]
 #+END_SRC
 
 ** Leiningen coordinates
@@ -145,13 +145,13 @@ in the REPL via =(require 'thi.ng.strf... :reload)= or similar.
 
     :min-lein-vesion "2.4.0"
     
-    :dependencies [<<dep-clj>>]
+    :dependencies [<<dep-clj>>
+                   <<dep-cljs>>]
 
     :source-paths ["src"]
     :test-paths   ["test"]
 
-    :profiles     {:dev {:dependencies [<<dep-cljs>>
-                                        <<dep-criterium>>]
+    :profiles     {:dev {:dependencies [<<dep-criterium>>]
                          :plugins [<<dep-cljsbuild>>
                                    <<dep-cljs-test>>]
                          :global-vars {*warn-on-reflection* true}
