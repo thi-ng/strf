@@ -153,9 +153,9 @@
                     [[(.getFullYear d)
                       (inc (.getMonth d))
                       (.getDate d)
-                      (.getHours t)
-                      (.getMinutes t)
-                      (.getSeconds t)]])))
+                      (.getHours d)
+                      (.getMinutes d)
+                      (.getSeconds d)]])))
        :dd-mm-yyyy
        (fn [d]
          (apply format [d2 "/" d2 "/" str]
@@ -201,9 +201,9 @@
                         (inc (.get c Calendar/MINUTE))
                         (.get c Calendar/SECOND)])]
                     :cljs
-                    [[(.getHours t)
-                      (.getMinutes t)
-                      (.getSeconds t)]])))}))
+                    [[(.getHours d)
+                      (.getMinutes d)
+                      (.getSeconds d)]])))}))
 
   (defn format-date
     ([d] ((date-formatters :yyyy-mm-dd-hh-mm-ss) d))
