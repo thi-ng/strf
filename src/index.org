@@ -6,6 +6,7 @@
 * Contents                                                         :toc_3_gh:
  - [[#about-the-project][About the project]]
      - [[#description][Description]]
+     - [[#example-usage][Example usage]]
  - [[#namespaces][Namespaces]]
  - [[#tests][Tests]]
  - [[#project-definition][Project definition]]
@@ -38,12 +39,46 @@ restructuring / dissolving of the [[http://thi.ng/common][thi.ng/common]] librar
 recent Clojure & Clojurescript versions and therefore is *not
 compatible with Clojure versions < 1.7.0*...
 
+** Example usage
+
+#+BEGIN_SRC clojure
+  (require '[thi.ng.strf.core :as f])
+
+  (f/parse-long "decafbad" 16)
+  ;; 3737844653
+
+  (f/parse-int "w00t" 10 :fail)
+  ;; :fail
+
+  (f/parse-float "3.1415926")
+  ;; 3.1415926
+
+  (f/parse-float "w00t" :fail)
+  ;; :fail
+
+  (f/format ["Rounded to 1/100th: " (f/float 2)] 3.1415926)
+  ;; "Rounded to 1/100th: 3.14"
+
+  (f/format ["#" (f/hex 2) (f/hex 2) (f/hex 2)] 8 64 192)
+  ;; "#0840c0"
+
+  (f/format-date (f/now))
+  ;; "2015-05-23 01:43:21"
+
+  (f/format-date :mm-dd-yyyy (f/now))
+  ;; "05/23/2015"
+
+  (keys f/date-formatters)
+  ;; (:yyyy-mm-dd :yyyy-mm-dd-hh-mm-ss :dd-mm-yyyy :mm-dd-yyyy :dd-mm-yy :hh-mm-ss)
+#+END_SRC
+
 * Namespaces
 
 - [[./core.org][thi.ng.strf.core]]
 
 * Tests
 
+- TBD
 
 * Project definition
 
