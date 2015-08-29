@@ -85,7 +85,7 @@ compatible with Clojure versions < 1.7.0*...
 ** Injected properties                                             :noexport:
 
 #+BEGIN_SRC clojure :noweb-ref version
-0.2.0
+0.2.1
 #+END_SRC
 #+BEGIN_SRC clojure :exports none :noweb-ref project-url
 http://thi.ng/strf
