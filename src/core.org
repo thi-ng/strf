@@ -5,6 +5,7 @@
      - [[#number-parsers][Number parsers]]
      - [[#number-formatters][Number formatters]]
      - [[#date-formatting][Date formatting]]
+     - [[#uuid-generation--hex-formatting][UUID generation & Hex formatting]]
      - [[#html-entity-escaping][HTML entity escaping]]
      - [[#complete-namespace-definition][Complete namespace definition]]
 
@@ -217,6 +218,32 @@
     [] #?(:clj (System/currentTimeMillis) :cljs (.getTime (js/Date.))))
 #+END_SRC
 
+** UUID generation & Hex formatting
+
+#+BEGIN_SRC clojure :noweb-ref uuid
+  (def ^:private format-16bit-hex (pad-left 4 \0))
+
+  (defn rand-bits
+    [bits] (int (* (rand) (bit-shift-left 1 bits))))
+
+  (defn rand-bits-hex
+    [bits] ((pad-left (Math/ceil (/ bits 4)) \0) (.toString (rand-bits bits) 16)))
+
+  (defn rand-16bits-hex
+    [] (format-16bit-hex (.toString (rand-int 0x10000) 16)))
+
+  (defn new-uuid
+    []
+    #?(:clj
+       (str (java.util.UUID/randomUUID))
+       :cljs (str
+              (rand-16bits-hex) (rand-16bits-hex)
+              \- (rand-16bits-hex)
+              \- (-> (rand-bits 16) (bit-and 0x0fff) (bit-or 0x4000) (.toString 16) (format-16bit-hex))
+              \- (-> (rand-bits 16) (bit-and 0x3fff) (bit-or 0x8000) (.toString 16) (format-16bit-hex))
+              \- (rand-16bits-hex) (rand-16bits-hex) (rand-16bits-hex))))
+#+END_SRC
+
 ** HTML entity escaping
 
 #+BEGIN_SRC clojure :noweb-ref escape
@@ -249,6 +276,8 @@
   <<formatters>>
 
   <<date>>
+
+  <<uuid>>
 
   <<escape>>
 #+END_SRC
