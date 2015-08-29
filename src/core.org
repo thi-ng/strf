@@ -227,10 +227,12 @@
     [bits] (int (* (rand) (bit-shift-left 1 bits))))
 
   (defn rand-bits-hex
-    [bits] ((pad-left (Math/ceil (/ bits 4)) \0) (.toString (rand-bits bits) 16)))
+    [bits]
+    ((pad-left (Math/ceil (/ bits 4)) \0)
+     (#?(:clj Integer/toString :cljs .toString) (rand-bits bits) 16)))
 
   (defn rand-16bits-hex
-    [] (format-16bit-hex (.toString (rand-int 0x10000) 16)))
+    [] (format-16bit-hex (#?(:clj Integer/toString :cljs .toString) (rand-int 0x10000) 16)))
 
   (defn new-uuid
     []
