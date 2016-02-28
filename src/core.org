@@ -62,7 +62,8 @@
      (fn [prec]
        #?(:clj
           (let [fmt (str "%1." prec "f")]
-            (fn [x] (clojure.core/format fmt (clojure.core/float x))))
+            (fn [x]
+              (String/format Locale/US fmt (to-array [(clojure.core/float x)]))))
           :cljs
           (fn [x] (.toFixed (js/Number. x) prec))))))
 
@@ -71,7 +72,7 @@
      (fn [prec]
        #?(:clj
           (let [fmt (str "%1." prec "f")]
-            (fn [x] (clojure.core/format fmt (clojure.core/double x))))
+            (fn [x] (String/format Locale/US fmt (to-array [(clojure.core/double x)]))))
           :cljs
           (fn [x] (.toFixed (js/Number. x) prec))))))
 
@@ -123,12 +124,12 @@
              (recur (.append s (f (first args))) (next fmt) (next args)))
            (.toString s)))
        :cljs
-       (loop [s [], fmt fmt, args args]
+       (loop [s (transient []), fmt fmt, args args]
          (if-let [f (first fmt)]
            (if (string? f)
-             (recur (conj s f) (next fmt) args)
-             (recur (conj s (f (first args))) (next fmt) (next args)))
-           (apply str s)))))
+             (recur (conj! s f) (next fmt) args)
+             (recur (conj! s (f (first args))) (next fmt) (next args)))
+           (apply str (persistent! s))))))
 #+END_SRC
 
 ** Date formatting
@@ -271,7 +272,7 @@
     (:refer-clojure :exclude [float int long double format])
     (:require
      [clojure.string :as str])
-    #?(:clj (:import [java.util Calendar Date])))
+    #?(:clj (:import [java.util Calendar Date Locale])))
 
   <<parsers>>
 

@@ -1,4 +1,4 @@
-#+SETUPFILE: ./setup.org
+#+SETUPFILE: ./src/setup.org
 #+TITLE: thi.ng/strf
 #+AUTHOR: Karsten Schmidt
 #+EMAIL: k@thi.ng
@@ -6,6 +6,7 @@
 * Contents                                                         :toc_3_gh:
  - [[#about-the-project][About the project]]
      - [[#description][Description]]
+     - [[#current-leiningen-coordinates][Current Leiningen coordinates]]
      - [[#example-usage][Example usage]]
  - [[#namespaces][Namespaces]]
  - [[#tests][Tests]]
@@ -27,17 +28,22 @@
      - [[#license][License]]
 
 * About the project
-
 ** Description
 
-A micro library providing a Clojure/Clojurescript compatible and
-extensible string & date formatters and a number of number parser
-helper functions. This library is the result of a thi.ng projectwide
-restructuring / dissolving of the [[http://thi.ng/common][thi.ng/common]] library.
+A small library providing composable, extensible string & date
+formatters and number parser helper functions for
+Clojure/Clojurescript. This library is the result of a thi.ng
+projectwide restructuring / dissolving of the [[http://thi.ng/common][thi.ng/common]] library.
 
-*Note:* This library relies on the new conditional reader syntax of
-recent Clojure & Clojurescript versions and therefore is *not
-compatible with Clojure versions < 1.7.0*...
+*Note:* This library relies on the conditional reader syntax of recent
+Clojure & Clojurescript versions and therefore is *not compatible with
+Clojure versions < 1.7.0*...
+
+** Current Leiningen coordinates
+
+#+BEGIN_SRC clojure
+  [thi.ng/strf "0.2.2"]
+#+END_SRC
 
 ** Example usage
 
@@ -74,18 +80,17 @@ compatible with Clojure versions < 1.7.0*...
 
 * Namespaces
 
-- [[./core.org][thi.ng.strf.core]]
+- [[./src/core.org][thi.ng.strf.core]]
 
 * Tests
 
 - TBD
 
 * Project definition
-
 ** Injected properties                                             :noexport:
 
 #+BEGIN_SRC clojure :noweb-ref version
-0.2.1
+0.2.2
 #+END_SRC
 #+BEGIN_SRC clojure :exports none :noweb-ref project-url
 http://thi.ng/strf
@@ -98,11 +103,11 @@ target/strf-<<version>>.js
 *** Runtime
 **** [[https://github.com/clojure/clojure][Clojure]]
 #+BEGIN_SRC clojure :noweb-ref dep-clj
-[org.clojure/clojure "1.7.0"]
+[org.clojure/clojure "1.8.0"]
 #+END_SRC
 **** [[https://github.com/clojure/clojurescript][ClojureScript]]
 #+BEGIN_SRC clojure :noweb-ref dep-cljs
-[org.clojure/clojurescript "1.7.107"]
+[org.clojure/clojurescript "1.7.228"]
 #+END_SRC
 *** Development
 **** [[https://github.com/hugoduncan/criterium][Criterium]]
@@ -121,7 +126,7 @@ target/strf-<<version>>.js
 ** Leiningen coordinates
 
 #+BEGIN_SRC clojure :noweb yes :noweb-ref lein-coords
-  [thi.ng/strf "0.1.0"]
+  [thi.ng/strf "0.2.2"]
 #+END_SRC
 
 ** Building this project
@@ -168,7 +173,7 @@ in the REPL via =(require 'thi.ng.strf... :reload)= or similar.
 
 ** Leiningen project file                                          :noexport:
 
-#+BEGIN_SRC clojure :tangle ../babel/project.clj :noweb yes :mkdirp yes :padline no
+#+BEGIN_SRC clojure :tangle ./babel/project.clj :noweb yes :mkdirp yes :padline no
   (defproject thi.ng/strf "<<version>>"
     :description  "Extensible CLJ/CLJS string formatting"
     :url          "<<project-url>>"
@@ -209,7 +214,7 @@ in the REPL via =(require 'thi.ng.strf... :reload)= or similar.
 
 ** ClojureScript HTML harness                                      :noexport:
 
-#+BEGIN_SRC html :tangle ../babel/index.html :noweb yes :mkdirp yes :padline no
+#+BEGIN_SRC html :tangle ./babel/index.html :noweb yes :mkdirp yes :padline no
   <!DOCTYPE html>
   <html lang="en">
     <head>
@@ -235,7 +240,7 @@ symbol =version= holding the version string defined above:
 
 *** Version namespace                                              :noexport:
 
-#+BEGIN_SRC clojure :tangle ../babel/src/thi/ng/strf/version.cljc :noweb yes :mkdirp yes :padline no :exports none
+#+BEGIN_SRC clojure :tangle ./babel/src/thi/ng/strf/version.cljc :noweb yes :mkdirp yes :padline no :exports none
   (ns thi.ng.strf.version)
 
   (def version "<<version>>")
@@ -243,9 +248,12 @@ symbol =version= holding the version string defined above:
 
 ** Release history
 
-| *Version* | *Released* | *Lein coordinates*      | *Description*        | *Tagged Github URL* |
-|-----------+------------+-------------------------+----------------------+---------------------|
-|     0.1.0 | 2015-05-25 | =[thi.ng/strf "0.1.0"]= | initial test release | [[https://github.com/thi-ng/strf/tree/0.1.0][0.1.0]]               |
+| *Version* | *Released* | *Lein coordinates*      | *Description*                                 | *Tagged Github URL* |
+|-----------+------------+-------------------------+-----------------------------------------------+---------------------|
+|     0.2.2 | 2016-02-28 | =[thi.ng/strf "0.2.2"]= | bugfix float formatting for certain locales   | [[https://github.com/thi-ng/strf/tree/0.2.2][0.2.2]]               |
+|     0.2.1 | 2015-08-30 | =[thi.ng/strf "0.2.1"]= | bugfix rand-bits-hex                          | [[https://github.com/thi-ng/strf/tree/0.2.1][0.2.1]]               |
+|     0.2.0 | 2015-08-30 | =[thi.ng/strf "0.2.0"]= | add date formats, UUIDv4 gen & hex formatters | [[https://github.com/thi-ng/strf/tree/0.2.0][0.2.0]]               |
+|     0.1.0 | 2015-05-25 | =[thi.ng/strf "0.1.0"]= | initial test release                          | [[https://github.com/thi-ng/strf/tree/0.1.0][0.1.0]]               |
 
 ** Contributors
 
