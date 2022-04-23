@@ -41,8 +41,8 @@ Clojure versions < 1.7.0*...
 
 ** Current Leiningen coordinates
 
-#+BEGIN_SRC clojure
-  [thi.ng/strf "0.2.2"]
+#+BEGIN_SRC clojure :noweb yes :noweb-ref lein-coords
+  [thi.ng/strf "0.2.3"]
 #+END_SRC
 
 ** Example usage
@@ -90,7 +90,7 @@ Clojure versions < 1.7.0*...
 ** Injected properties                                             :noexport:
 
 #+BEGIN_SRC clojure :noweb-ref version
-0.2.2
+0.2.3
 #+END_SRC
 #+BEGIN_SRC clojure :exports none :noweb-ref project-url
 http://thi.ng/strf
@@ -103,16 +103,16 @@ target/strf-<<version>>.js
 *** Runtime
 **** [[https://github.com/clojure/clojure][Clojure]]
 #+BEGIN_SRC clojure :noweb-ref dep-clj
-[org.clojure/clojure "1.8.0"]
+[org.clojure/clojure "1.11.1"]
 #+END_SRC
 **** [[https://github.com/clojure/clojurescript][ClojureScript]]
 #+BEGIN_SRC clojure :noweb-ref dep-cljs
-[org.clojure/clojurescript "1.7.228"]
+[org.clojure/clojurescript "1.11.4"]
 #+END_SRC
 *** Development
 **** [[https://github.com/hugoduncan/criterium][Criterium]]
 #+BEGIN_SRC clojure :noweb-ref dep-criterium
-[criterium "0.4.3"]
+[criterium "0.4.6"]
 #+END_SRC
 **** [[https://github.com/cemerick/clojurescript.test][clojurescript.test]]
 #+BEGIN_SRC clojure :noweb-ref dep-cljs-test
@@ -120,13 +120,7 @@ target/strf-<<version>>.js
 #+END_SRC
 **** [[https://github.com/emezeske/lein-cljsbuild][Cljsbuild]]
 #+BEGIN_SRC clojure :noweb-ref dep-cljsbuild
-[lein-cljsbuild "1.1.0"]
-#+END_SRC
-
-** Leiningen coordinates
-
-#+BEGIN_SRC clojure :noweb yes :noweb-ref lein-coords
-  [thi.ng/strf "0.2.2"]
+[lein-cljsbuild "1.1.8"]
 #+END_SRC
 
 ** Building this project
@@ -208,7 +202,7 @@ in the REPL via =(require 'thi.ng.strf... :reload)= or similar.
 
     :pom-addition [:developers [:developer
                                 [:name "Karsten Schmidt"]
-                                [:url "http://postspectacular.com"]
+                                [:url "https://thi.ng"]
                                 [:timezone "0"]]])
 #+END_SRC
 
@@ -250,6 +244,7 @@ symbol =version= holding the version string defined above:
 
 | *Version* | *Released* | *Lein coordinates*      | *Description*                                 | *Tagged Github URL* |
 |-----------+------------+-------------------------+-----------------------------------------------+---------------------|
+|     0.2.3 | 2022-04-23 | =[thi.ng/strf "0.2.3"]= | update deps                                   | [[https://github.com/thi-ng/strf/tree/0.2.3][0.2.3]]               |
 |     0.2.2 | 2016-02-28 | =[thi.ng/strf "0.2.2"]= | bugfix float formatting for certain locales   | [[https://github.com/thi-ng/strf/tree/0.2.2][0.2.2]]               |
 |     0.2.1 | 2015-08-30 | =[thi.ng/strf "0.2.1"]= | bugfix rand-bits-hex                          | [[https://github.com/thi-ng/strf/tree/0.2.1][0.2.1]]               |
 |     0.2.0 | 2015-08-30 | =[thi.ng/strf "0.2.0"]= | add date formats, UUIDv4 gen & hex formatters | [[https://github.com/thi-ng/strf/tree/0.2.0][0.2.0]]               |
@@ -259,7 +254,7 @@ symbol =version= holding the version string defined above:
 
 | *Name*          | *Role*                          | *Website*                  |
 |-----------------+---------------------------------+----------------------------|
-| [[k@thi.ng][Karsten Schmidt]] | initiator & principal developer | http://postspectacular.com |
+| [[k@thi.ng][Karsten Schmidt]] | initiator & principal developer | https://thi.ng |
 
 I've got a fairly detailed roadmap and task list to implement over the
 coming months, but am always happy to receive feedback & suggestions
