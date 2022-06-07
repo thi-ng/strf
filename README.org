@@ -107,7 +107,7 @@ target/strf-<<version>>.js
 #+END_SRC
 **** [[https://github.com/clojure/clojurescript][ClojureScript]]
 #+BEGIN_SRC clojure :noweb-ref dep-cljs
-[org.clojure/clojurescript "1.11.4"]
+[org.clojure/clojurescript "1.11.54"]
 #+END_SRC
 *** Development
 **** [[https://github.com/hugoduncan/criterium][Criterium]]
