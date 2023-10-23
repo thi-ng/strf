@@ -42,7 +42,7 @@ Clojure versions < 1.7.0*...
 ** Current Leiningen coordinates
 
 #+BEGIN_SRC clojure :noweb yes :noweb-ref lein-coords
-  [thi.ng/strf "0.2.3"]
+  [thi.ng/strf "0.2.4"]
 #+END_SRC
 
 ** Example usage
@@ -90,7 +90,7 @@ Clojure versions < 1.7.0*...
 ** Injected properties                                             :noexport:
 
 #+BEGIN_SRC clojure :noweb-ref version
-0.2.3
+0.2.4
 #+END_SRC
 #+BEGIN_SRC clojure :exports none :noweb-ref project-url
 http://thi.ng/strf
@@ -107,7 +107,7 @@ target/strf-<<version>>.js
 #+END_SRC
 **** [[https://github.com/clojure/clojurescript][ClojureScript]]
 #+BEGIN_SRC clojure :noweb-ref dep-cljs
-[org.clojure/clojurescript "1.11.54"]
+[org.clojure/clojurescript "1.11.121"]
 #+END_SRC
 *** Development
 **** [[https://github.com/hugoduncan/criterium][Criterium]]
@@ -244,6 +244,7 @@ symbol =version= holding the version string defined above:
 
 | *Version* | *Released* | *Lein coordinates*      | *Description*                                 | *Tagged Github URL* |
 |-----------+------------+-------------------------+-----------------------------------------------+---------------------|
+|     0.2.4 | 2022-10-23 | =[thi.ng/strf "0.2.4"]= | remove shadow warnings (#2)                   | [[https://github.com/thi-ng/strf/tree/0.2.4][0.2.4]]               |
 |     0.2.3 | 2022-04-23 | =[thi.ng/strf "0.2.3"]= | update deps                                   | [[https://github.com/thi-ng/strf/tree/0.2.3][0.2.3]]               |
 |     0.2.2 | 2016-02-28 | =[thi.ng/strf "0.2.2"]= | bugfix float formatting for certain locales   | [[https://github.com/thi-ng/strf/tree/0.2.2][0.2.2]]               |
 |     0.2.1 | 2015-08-30 | =[thi.ng/strf "0.2.1"]= | bugfix rand-bits-hex                          | [[https://github.com/thi-ng/strf/tree/0.2.1][0.2.1]]               |
@@ -254,7 +255,8 @@ symbol =version= holding the version string defined above:
 
 | *Name*          | *Role*                          | *Website*                  |
 |-----------------+---------------------------------+----------------------------|
-| [[k@thi.ng][Karsten Schmidt]] | initiator & principal developer | https://thi.ng |
+| [[@postspectacular][Karsten Schmidt]] | initiator & principal developer | https://thi.ng |
+| [[@dgtized][Charles Comstock]] | bug fixes | https://dgtized.github.io/ |
 
 I've got a fairly detailed roadmap and task list to implement over the
 coming months, but am always happy to receive feedback & suggestions
