@@ -269,7 +269,7 @@
 
 #+BEGIN_SRC clojure :tangle ../babel/src/thi/ng/strf/core.cljc :noweb yes :mkdirp yes :padline no
   (ns thi.ng.strf.core
-    (:refer-clojure :exclude [float int long double format])
+    (:refer-clojure :exclude [float int long double format parse-boolean parse-double parse-long])
     (:require
      [clojure.string :as str])
     #?(:clj (:import [java.util Calendar Date Locale])))
